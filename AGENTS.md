@@ -16,8 +16,8 @@ A guide for people and coding agents who work on this repository.
 | `tests/fixtures/` | Masked FYTA answers with invented ids and names |
 | `Dockerfile`, `.dockerignore` | The container image (`python:3.13-slim`, user 65534, no pip) |
 | `deploy/kubernetes/cronjob.yaml` | A generic example CronJob |
-| `.github/workflows/ci.yml` | Runs the tests on Python 3.9 and 3.13 |
-| `.github/workflows/release.yml` | On a `v*` tag, builds and pushes the image to ghcr.io |
+| `.github/workflows/ci-pr.yml` | Tests on Python 3.9 and 3.13, then squash-merges a non-draft pull request |
+| `.github/workflows/ci-main.yml` | On the push to `main`: tests, tag, GitHub Release, image to ghcr.io and Docker Hub |
 
 ## How to test
 
@@ -47,3 +47,10 @@ so a mistake in the encoder cannot hide behind a matching mistake in the decoder
 - **Never follow a redirect** when a request carries an `Authorization` header.
 - A change to the metric names or labels is a breaking change for dashboards: say so in the README.
 - Keep the workflows small. Every CI minute counts.
+- **Releases are automatic; never push a tag by hand.** The merge of a pull request tags and
+  releases through `vinitu/github-workflows`, pinned by tag (`@vX.Y.Z`, never `@main`). The branch
+  prefix sets the bump (`major/`, `feature/` or `features/` for minor, anything else patch), so pick
+  the branch name before opening the pull request. Merging and tagging use the `GHA_RELEASE_TOKEN`
+  secret; the image uses `DOCKERHUB_NAMESPACE` (variable), `DOCKERHUB_USERNAME` and
+  `DOCKERHUB_TOKEN` (secrets). The list is in the README, section Releases.
+- Keep the Python 3.9 job on `ubuntu-24.04`: 3.9 is not published for `ubuntu-latest` (26.04).

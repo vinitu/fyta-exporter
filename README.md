@@ -159,9 +159,34 @@ service that accepts Prometheus remote_write. Point `METRICS_URL` at
    last_over_time(fyta_battery_percent[30m])
    ```
 
-The image is published to `ghcr.io/vinitu/fyta-exporter` (and to Docker Hub as `<user>/fyta-exporter` when the `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` repository secrets are set) (`linux/amd64` and `linux/arm64`) when a
-`v*` tag is pushed. If you fork the repository, the release workflow publishes to your own
-`ghcr.io/<owner>/<repository>`, and the image name in the CronJob has to follow.
+## Releases
+
+Every pull request that is merged into `main` becomes a release. Nobody tags by hand.
+
+1. A pull request runs the tests (Python 3.9 and 3.13). When it is not a draft and the tests pass,
+   `ci-pr.yml` squash-merges it. The branch prefix sets the version bump: `major/` is major,
+   `feature/` and `features/` are minor, anything else is a patch.
+2. The merge is a push to `main`, which starts `ci-main.yml`: tests, the next `vX.Y.Z` tag, a
+   GitHub Release, and the Docker image.
+3. The image is published for `linux/amd64` and `linux/arm64` as `ghcr.io/vinitu/fyta-exporter`,
+   tagged with the release (`v1.2.3`) and `latest`. When Docker Hub is set up (below), the same
+   tags go to `<DOCKERHUB_NAMESPACE>/fyta-exporter`.
+
+The workflows call the shared ones in [`vinitu/github-workflows`](https://github.com/vinitu/github-workflows).
+Settings the repository needs (Settings, Secrets and variables, Actions):
+
+| Name | Kind | Needed for |
+|---|---|---|
+| `GHA_RELEASE_TOKEN` | secret | A personal access token. It merges the pull request and creates the tag. The built-in token cannot: what it does starts no workflow, so nothing would be released. Scope: this repository, `Contents` and `Pull requests` read and write |
+| `DOCKERHUB_NAMESPACE` | variable | The Docker Hub user or organisation to push to. Leave it unset to publish to ghcr.io only |
+| `DOCKERHUB_USERNAME` | secret | Docker Hub user name. Needed with the namespace |
+| `DOCKERHUB_TOKEN` | secret | A Docker Hub access token with write access (hub.docker.com, Account settings, Security). Needed with the namespace |
+
+ghcr.io needs nothing: it uses the built-in token. Docker Hub is skipped, with a warning in the
+run, when the namespace is set but a secret is missing.
+
+If you fork the repository, the workflows publish to your own `ghcr.io/<owner>/fyta-exporter`,
+and the image name in the CronJob has to follow.
 
 ## Alerts and dashboards
 

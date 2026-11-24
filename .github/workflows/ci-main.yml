@@ -1,0 +1,135 @@
+name: CI · Main Push · Release
+
+# Every merge to main becomes a tag, a GitHub Release and a Docker image. The
+# bump comes from the head branch of the merged pull request: major/ -> major,
+# feature/ or features/ -> minor, anything else -> patch.
+#
+# Image tags are the release tag (v1.2.3) and latest, on ghcr.io and, when the
+# DOCKERHUB_NAMESPACE variable and the two Docker Hub secrets exist, on Docker Hub.
+
+on:
+  push:
+    branches:
+      - main
+  # Escape hatch for a merge that did not start this workflow (one made with
+  # GITHUB_TOKEN). Runs only on main, see the `if:` of the tests job.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Never cancel a release half way, between the tag and the release:
+# queue the next merge behind it instead.
+concurrency:
+  group: ci-main-fyta-exporter
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    name: Tests (Python ${{ matrix.python-version }})
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # ubuntu-24.04, not -latest: Python 3.9 is not published for Ubuntu 26.04
+          # (the first run failed on it). The code must keep working on 3.9.
+          - os: ubuntu-24.04
+            python-version: "3.9"
+          - os: ubuntu-latest
+            python-version: "3.13"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run the tests
+        run: python3 -m unittest discover -s tests
+
+  determine_version:
+    name: Detect version bump
+    needs:
+      - tests
+    permissions:
+      contents: read
+      pull-requests: read
+    uses: vinitu/github-workflows/.github/workflows/workflow-determine-version-bump.yml@v1.0.3
+    with:
+      target-branch: main
+      major-branch-prefixes: |
+        major/
+      minor-branch-prefixes: |
+        feature/
+        features/
+      patch-branch-prefixes: |
+        fix/
+        fixes/
+      default: patch
+
+  calculate_tag:
+    name: Compute next tag
+    needs:
+      - determine_version
+    permissions:
+      contents: read
+    uses: vinitu/github-workflows/.github/workflows/workflow-compute-next-tag.yml@v1.0.3
+    with:
+      version-bump: ${{ needs.determine_version.outputs['version-bump'] }}
+
+  # There is no version file to update, so the tag goes on github.sha itself.
+  create_tag:
+    name: Create git tag
+    needs:
+      - calculate_tag
+    permissions:
+      contents: write
+    uses: vinitu/github-workflows/.github/workflows/workflow-create-tag.yml@v1.0.3
+    with:
+      sha: ${{ github.sha }}
+      next-tag: ${{ needs.calculate_tag.outputs['new-tag'] }}
+      previous-tag: ${{ needs.calculate_tag.outputs['previous-tag'] }}
+    secrets:
+      gh_token: ${{ secrets.GHA_RELEASE_TOKEN }}
+
+  create_release:
+    name: Publish release
+    needs:
+      - create_tag
+    if: ${{ needs.create_tag.outputs.created == 'true' }}
+    permissions:
+      contents: write
+      pull-requests: read
+    uses: vinitu/github-workflows/.github/workflows/workflow-create-release.yml@v1.0.3
+    with:
+      tag-name: ${{ needs.create_tag.outputs['new-tag'] }}
+      previous-tag: ${{ needs.create_tag.outputs['previous-tag'] }}
+      merged-prs: "[]"
+
+  # Runs next to the release, not after it: the image is built from the tagged
+  # commit and does not need the release notes. If it fails, re-run the failed
+  # job; a re-run of the whole workflow would find the commit already tagged and
+  # skip the release and the image.
+  publish_image:
+    name: Publish image
+    needs:
+      - create_tag
+    if: ${{ needs.create_tag.outputs.created == 'true' }}
+    permissions:
+      contents: read
+      packages: write
+    # workflow-publish-image.yml first shipped in v1.1.0 of vinitu/github-workflows.
+    uses: vinitu/github-workflows/.github/workflows/workflow-publish-image.yml@v1.1.0
+    with:
+      image-name: fyta-exporter
+      tag: ${{ needs.create_tag.outputs['new-tag'] }}
+      ref: ${{ github.sha }}
+      platforms: linux/amd64,linux/arm64
+      dockerhub-namespace: ${{ vars.DOCKERHUB_NAMESPACE }}
+    secrets:
+      dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
