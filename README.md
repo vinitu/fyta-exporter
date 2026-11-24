@@ -159,7 +159,7 @@ service that accepts Prometheus remote_write. Point `METRICS_URL` at
    last_over_time(fyta_battery_percent[30m])
    ```
 
-The image is published to `ghcr.io/vinitu/fyta-exporter` (`linux/amd64` and `linux/arm64`) when a
+The image is published to `ghcr.io/vinitu/fyta-exporter` (and to Docker Hub as `<user>/fyta-exporter` when the `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` repository secrets are set) (`linux/amd64` and `linux/arm64`) when a
 `v*` tag is pushed. If you fork the repository, the release workflow publishes to your own
 `ghcr.io/<owner>/<repository>`, and the image name in the CronJob has to follow.
 

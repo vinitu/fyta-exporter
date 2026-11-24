@@ -10,7 +10,8 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    # ubuntu-24.04, not -latest: Python 3.9 is not published for Ubuntu 26.04 (the first run failed on it).
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
