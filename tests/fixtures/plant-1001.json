@@ -1,0 +1,76 @@
+{
+ "plant": {
+  "id": 1001,
+  "nickname": "Fiddle leaf",
+  "status": 2,
+  "received_data_at": "2026-11-24 13:22:58",
+  "sensors": [
+   {
+    "id": "AA:00:00:00:00:01",
+    "status": 1,
+    "battery_level": 87,
+    "last_data_received_at": "2026-11-24 13:22:58"
+   }
+  ],
+  "measurements": {
+   "air_humidity": {
+    "type": "air_humidity",
+    "status": null,
+    "values": {
+     "min_good": "40",
+     "max_good": "70",
+     "current": null
+    }
+   },
+   "temperature": {
+    "type": "temperature",
+    "status": 3,
+    "values": {
+     "min_good": "17",
+     "max_good": "36",
+     "min_acceptable": "10",
+     "max_acceptable": "42",
+     "current": "22"
+    },
+    "unit": "C"
+   },
+   "light": {
+    "type": "light",
+    "status": 3,
+    "values": {
+     "min_good": "120",
+     "max_good": "920",
+     "min_acceptable": "3",
+     "max_acceptable": "1100",
+     "current": "310"
+    },
+    "unit": "umol"
+   },
+   "moisture": {
+    "type": "moisture",
+    "status": 3,
+    "values": {
+     "min_good": "35",
+     "max_good": "70",
+     "min_acceptable": "25",
+     "max_acceptable": "80",
+     "current": "41"
+    },
+    "unit": "%"
+   },
+   "salinity": {
+    "type": "salinity",
+    "status": 3,
+    "values": {
+     "min_good": "0.8",
+     "max_good": "1.6",
+     "min_acceptable": "0.5",
+     "max_acceptable": "2",
+     "current": "1.1"
+    },
+    "unit": "mS/cm"
+   },
+   "battery": 87
+  }
+ }
+}

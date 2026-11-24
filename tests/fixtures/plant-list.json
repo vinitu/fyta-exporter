@@ -1,0 +1,135 @@
+{
+ "gardens": [
+  {
+   "id": 7001,
+   "garden_name": "Example garden",
+   "origin_path": null,
+   "thumb_path": null,
+   "mac_address": null
+  }
+ ],
+ "plants": [
+  {
+   "id": 1001,
+   "nickname": "Fiddle leaf",
+   "scientific_name": "Ficus lyrata",
+   "status": 2,
+   "is_shared": false,
+   "wifi_status": 1,
+   "received_data_at": "2026-11-24 13:22:58",
+   "temperature_status": 3,
+   "light_status": 3,
+   "moisture_status": 3,
+   "salinity_status": 3,
+   "nutrients_status": 3,
+   "air_humidity_status": null,
+   "garden": {
+    "id": 7001,
+    "index": null
+   },
+   "sensor": {
+    "id": "AA:00:00:00:00:01",
+    "has_sensor": true,
+    "status": 1,
+    "is_battery_low": false,
+    "received_data_at": "2026-11-24 13:22:58"
+   },
+   "hub": {
+    "id": 9001,
+    "hub_id": "HUB-EXAMPLE-01",
+    "hub_name": "Example hub",
+    "status": 1,
+    "received_data_at": "2026-11-24 13:22:58"
+   },
+   "sensors": [
+    {
+     "id": "AA:00:00:00:00:01",
+     "has_sensor": true,
+     "status": 1,
+     "is_battery_low": false
+    }
+   ]
+  },
+  {
+   "id": 1002,
+   "nickname": "Monstera",
+   "scientific_name": "Monstera deliciosa",
+   "status": 2,
+   "is_shared": false,
+   "wifi_status": 1,
+   "received_data_at": "2026-11-24 13:22:58",
+   "temperature_status": 3,
+   "light_status": 3,
+   "moisture_status": 2,
+   "salinity_status": 3,
+   "nutrients_status": 3,
+   "air_humidity_status": null,
+   "garden": {
+    "id": 7001,
+    "index": null
+   },
+   "sensor": {
+    "id": "AA:00:00:00:00:02",
+    "has_sensor": true,
+    "status": 1,
+    "is_battery_low": false,
+    "received_data_at": "2026-11-24 13:22:58"
+   },
+   "hub": {
+    "id": 9001,
+    "hub_id": "HUB-EXAMPLE-01",
+    "hub_name": "Example hub",
+    "status": 1,
+    "received_data_at": "2026-11-24 13:22:58"
+   },
+   "sensors": [
+    {
+     "id": "AA:00:00:00:00:02",
+     "has_sensor": true,
+     "status": 1,
+     "is_battery_low": false
+    }
+   ]
+  },
+  {
+   "id": 1003,
+   "nickname": "Cactus without sensor",
+   "scientific_name": "Echinopsis",
+   "status": 2,
+   "is_shared": false,
+   "wifi_status": 1,
+   "received_data_at": "2026-11-24 13:22:58",
+   "temperature_status": 3,
+   "light_status": 3,
+   "moisture_status": null,
+   "salinity_status": 3,
+   "nutrients_status": 3,
+   "air_humidity_status": null,
+   "garden": {
+    "id": 7001,
+    "index": null
+   },
+   "sensor": {
+    "id": null,
+    "has_sensor": false
+   },
+   "hub": {
+    "id": 9001,
+    "hub_id": "HUB-EXAMPLE-01",
+    "hub_name": "Example hub",
+    "status": 1,
+    "received_data_at": "2026-11-24 13:22:58"
+   },
+   "sensors": []
+  }
+ ],
+ "plantOverview": {
+  "doingGreat": 1,
+  "needHelp": 1,
+  "analysing": 0,
+  "outdated": 0,
+  "silent": 0,
+  "noBeam": 1
+ },
+ "hubs_with_lost_connection": []
+}

@@ -1,0 +1,514 @@
+{
+ "measurements": [
+  {
+   "air_humidity": null,
+   "light": 95.2,
+   "temperature": 21.0,
+   "soil_moisture": 28.0,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": 0.93,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 13:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 90.7,
+   "temperature": 20.95,
+   "soil_moisture": 28.1,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 12:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 86.2,
+   "temperature": 20.9,
+   "soil_moisture": 28.2,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 12:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 81.7,
+   "temperature": 20.85,
+   "soil_moisture": 28.3,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 11:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 77.2,
+   "temperature": 20.8,
+   "soil_moisture": 28.4,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 11:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 72.7,
+   "temperature": 20.75,
+   "soil_moisture": 28.5,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 10:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 68.2,
+   "temperature": 20.7,
+   "soil_moisture": 28.6,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": 0.93,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 10:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 63.7,
+   "temperature": 20.65,
+   "soil_moisture": 28.7,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 09:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 59.2,
+   "temperature": 20.6,
+   "soil_moisture": 28.8,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 09:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 54.7,
+   "temperature": 20.55,
+   "soil_moisture": 28.9,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 08:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 50.2,
+   "temperature": 20.5,
+   "soil_moisture": 29.0,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 08:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 45.7,
+   "temperature": 20.45,
+   "soil_moisture": 29.1,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 07:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 41.2,
+   "temperature": 20.4,
+   "soil_moisture": 29.2,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": 0.93,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 07:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 36.7,
+   "temperature": 20.35,
+   "soil_moisture": 29.3,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 06:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 32.2,
+   "temperature": 20.3,
+   "soil_moisture": 29.4,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 06:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 27.7,
+   "temperature": 20.25,
+   "soil_moisture": 29.5,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 05:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 23.2,
+   "temperature": 20.2,
+   "soil_moisture": 29.6,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 05:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 18.7,
+   "temperature": 20.15,
+   "soil_moisture": 29.7,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 04:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 14.2,
+   "temperature": 20.1,
+   "soil_moisture": 29.8,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": 0.93,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 04:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 9.7,
+   "temperature": 20.05,
+   "soil_moisture": 29.9,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 03:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 5.2,
+   "temperature": 20.0,
+   "soil_moisture": 30.0,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 03:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.7,
+   "temperature": 19.95,
+   "soil_moisture": 30.1,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 02:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.9,
+   "soil_moisture": 30.2,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 02:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.85,
+   "soil_moisture": 30.3,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 01:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.8,
+   "soil_moisture": 30.4,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": 0.93,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 01:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.75,
+   "soil_moisture": 30.5,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 00:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.7,
+   "soil_moisture": 30.6,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-24 00:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.65,
+   "soil_moisture": 30.7,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 23:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.6,
+   "soil_moisture": 30.8,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 23:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.55,
+   "soil_moisture": 30.9,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 22:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.5,
+   "soil_moisture": 31.0,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": 0.93,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 22:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.45,
+   "soil_moisture": 31.1,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 21:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.4,
+   "soil_moisture": 31.2,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 21:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.35,
+   "soil_moisture": 31.3,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 20:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.3,
+   "soil_moisture": 31.4,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 20:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.25,
+   "soil_moisture": 31.5,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 19:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.2,
+   "soil_moisture": 31.6,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": 0.93,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 19:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.15,
+   "soil_moisture": 31.7,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 18:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.1,
+   "soil_moisture": 31.8,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 18:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.05,
+   "soil_moisture": 31.9,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 17:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 19.0,
+   "soil_moisture": 32.0,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 17:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 18.95,
+   "soil_moisture": 32.1,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 16:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 18.9,
+   "soil_moisture": 32.2,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": 0.93,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 16:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 18.85,
+   "soil_moisture": 32.3,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 15:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 18.8,
+   "soil_moisture": 32.4,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 15:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 18.75,
+   "soil_moisture": 32.5,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 14:52:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 18.7,
+   "soil_moisture": 32.6,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 14:22:58"
+  },
+  {
+   "air_humidity": null,
+   "light": 0.0,
+   "temperature": 18.65,
+   "soil_moisture": 32.7,
+   "soil_moisture_anomaly": false,
+   "soil_fertility": null,
+   "soil_fertility_anomaly": false,
+   "date_utc": "2026-11-23 13:52:58"
+  }
+ ],
+ "dli_light": [
+  {
+   "dli_light": 2.1,
+   "date_utc": "2026-11-23 00:00:00"
+  },
+  {
+   "dli_light": 1.8,
+   "date_utc": "2026-11-22 00:00:00"
+  },
+  {
+   "dli_light": 2.4,
+   "date_utc": "2026-11-21 00:00:00"
+  },
+  {
+   "dli_light": 2.0,
+   "date_utc": "2026-11-20 00:00:00"
+  },
+  {
+   "dli_light": 1.5,
+   "date_utc": "2026-11-19 00:00:00"
+  },
+  {
+   "dli_light": 1.9,
+   "date_utc": "2026-11-18 00:00:00"
+  },
+  {
+   "dli_light": 2.2,
+   "date_utc": "2026-11-17 00:00:00"
+  }
+ ]
+}
