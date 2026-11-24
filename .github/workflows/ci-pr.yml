@@ -1,0 +1,95 @@
+name: CI · PR Tests · Merge
+
+# Test every pull request. A pull request that is not a draft is then merged
+# (squash). This workflow never tags: ci-main.yml tags and releases on the push
+# to main that the merge produces. Tagging here would tag the previous commit,
+# because `gh pr merge --auto` returns before GitHub has merged.
+#
+# The merge uses GHA_RELEASE_TOKEN (a personal access token). A merge made with
+# the built-in GITHUB_TOKEN starts no `on: push` workflow, so ci-main.yml would
+# never run.
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: Tests (Python ${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # ubuntu-24.04, not -latest: Python 3.9 is not published for Ubuntu 26.04
+          # (the first run failed on it). The code must keep working on 3.9.
+          - os: ubuntu-24.04
+            python-version: "3.9"
+          - os: ubuntu-latest
+            python-version: "3.13"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run the tests
+        run: python3 -m unittest discover -s tests
+
+  determine_version:
+    name: Detect version bump
+    needs:
+      - tests
+    if: ${{ github.event.pull_request.draft == false }}
+    permissions:
+      contents: read
+      pull-requests: read
+    uses: vinitu/github-workflows/.github/workflows/workflow-determine-version-bump.yml@v1.0.3
+    with:
+      target-branch: main
+      major-branch-prefixes: |
+        major/
+      minor-branch-prefixes: |
+        feature/
+        features/
+      patch-branch-prefixes: |
+        fix/
+        fixes/
+      default: patch
+      pull-requests: ${{ toJson(github.event.pull_request) }}
+
+  # The direct-merge fallback in workflow-merge-pull-requests.yml waits for no
+  # check. It is safe here only because this job needs the tests: it runs after
+  # they passed.
+  merge_prs:
+    name: Merge PR
+    needs:
+      - tests
+      - determine_version
+    if: ${{ github.event.pull_request.draft == false && needs.determine_version.outputs.matching_pr == 'true' }}
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: vinitu/github-workflows/.github/workflows/workflow-merge-pull-requests.yml@v1.0.3
+    with:
+      target-branch: main
+      merge-method: squash
+      pull-requests: ${{ toJson(github.event.pull_request) }}
+    secrets:
+      gh_token: ${{ secrets.GHA_RELEASE_TOKEN }}
