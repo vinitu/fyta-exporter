@@ -1,0 +1,96 @@
+# Example CronJob for fyta-exporter. Adjust the namespace, the image tag and the secrets.
+#
+# It reads the FYTA plants once every 15 minutes and pushes the metrics with Prometheus remote_write.
+# FYTA's hub uploads about every 15-30 minutes, so 15 minutes never misses a reading.
+#
+# METRICS_URL must point at a Prometheus remote_write receiver, for example
+#   http://<prometheus-service>.<namespace>.svc:9090/api/v1/write
+# Prometheus must run with --web.enable-remote-write-receiver for that URL to accept data.
+#
+# Secrets (create them first, see the README):
+#   fyta-credentials    keys: email, password            (required)
+#   fyta-exporter-push  keys: url, user, password        (url is needed; user and password are optional)
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: fyta-exporter
+  namespace: default
+  labels:
+    app: fyta-exporter
+spec:
+  schedule: "*/15 * * * *"
+  suspend: false
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 300
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 90
+      backoffLimit: 1
+      template:
+        metadata:
+          labels:
+            app: fyta-exporter
+        spec:
+          restartPolicy: Never
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+          containers:
+            - name: fyta-exporter
+              # Pin a version tag (for example :v1.0.0) once you have one you trust.
+              image: ghcr.io/vinitu/fyta-exporter:latest
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop: ["ALL"]
+              env:
+                - name: FYTA_EMAIL
+                  valueFrom:
+                    secretKeyRef:
+                      name: fyta-credentials
+                      key: email
+                - name: FYTA_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: fyta-credentials
+                      key: password
+                # Uncomment to read only some plants. Without it every plant of the account is read.
+                # - name: FYTA_PLANT_IDS
+                #   value: "1001,1002"
+                - name: INSTANCE_LABEL
+                  value: "fyta"
+                # The receiver. If you prefer a plain value over a Secret, replace this entry with
+                #   - name: METRICS_URL
+                #     value: "http://<prometheus-service>.<namespace>.svc:9090/api/v1/write"
+                - name: METRICS_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: fyta-exporter-push
+                      key: url
+                      optional: true
+                # Basic auth for the receiver, only when it asks for one. Sent over https or to localhost only.
+                - name: METRICS_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: fyta-exporter-push
+                      key: user
+                      optional: true
+                - name: METRICS_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: fyta-exporter-push
+                      key: password
+                      optional: true
+              resources:
+                requests:
+                  cpu: 10m
+                  memory: 32Mi
+                limits:
+                  cpu: 100m
+                  memory: 64Mi
